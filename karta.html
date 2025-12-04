@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hitta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  </head>
+
+  <body>
+
+<header>
+</header>
+
+<main class="container mt-5">
+  <h1>Hitta oss</h1>
+  <!-- Karta -->
+  <div id="map"></div>
+  <br>
+  <p align="center" class="png">Du hittar kontoret på andra våningen, Du bör knacka på dörren till vänster.</p>
+  <br>
+  <p align="center" class="p">Öppetider är från 08:00-19:00</p>
+</main>
+
+<footer>
+</footer>
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+  // Koordinater för Kaggeholmsvägen 28
+  const lat = 59.27196;
+  const lng = 18.08090;
+
+  // Skapar kartan
+  var map = L.map('map').setView([lat, lng], 15);
+
+  // Kartlager
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: "© OpenStreetMap"
+  }).addTo(map);
+
+  // Marker på adressen
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup("Kaggeholmsvägen 28")
+    .openPopup();
+</script>
+
+<script src="init.js"></script>
+<script src="custom"></script>
+
+</body>
+</html>
