@@ -1,49 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bokning</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-   <link rel="stylesheet" href="styles.css" />
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Boka professionell och pålitlig städning och fönsterputs i Stockholm. Få ett rent och tryggt hem med Draganas städ och fönsterputts.">
+  <title>Bokning</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body>
 
-  <body>
-<header>
-</nav>
+<header class="bb">
 </header>
 
-    <main>
-<div class="input">
-<div class="input-group">
-  <span class="input-group-text">För och efternamn</span>
-  <input type="text" aria-label="First name" class="form-control">
-  <input type="text" aria-label="Last name" class="form-control">
-</div>
-<div class="input-group flex-nowrap">
-  <span class="input-group-text" id="addon-wrapping">E-mail</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-</div>
+<main class="container mt-5">
 
-<div class="input-group">
-  </button>
-  <div class="dropdown">
-    <select class="form-select w-auto" id="brandSelect">
-        <option value="">Fönsterputts</option>
+  <h1>Bokning</h1>
+
+  <div class="input">
+    <div class="input-group mb-3">
+      <span class="input-group-text">Förnamn</span>
+      <input type="text" aria-label="First name" class="form-control">
+      <span class="input-group-text">Efternamn</span>
+      <input type="text" aria-label="Last name" class="form-control">
+    </div>
+
+    <div class="input-group mb-3 flex-nowrap">
+      <span class="input-group-text" id="addon-wrapping">E-mail</span>
+      <input type="text" class="form-control" placeholder="exempel@email.com" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+
+    <div class="input-group mb-3">
+      <select class="form-select w-auto" id="brandSelect" placeholder=>
+         <option value="" selected disabled class="dropdown">Välj tjänst</option>
+        <option>Fönsterputts</option>
         <option>Kontorstädning</option>
         <option>Hemstädning</option>
         <option>Trappstädning</option>
-    </select>
-</div>
+      </select>
+    </div>
 
-</div>
-</div>
-    </main>
-     <footer>
-   
-    </footer>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <div class="mt-3">
+      <button id="submitBtn" class="btn btn-primary">Skicka</button>
+    </div>
+
+    <div id="confirmationMessage" class="alert alert-success mt-3 d-none" role="alert">
+    </div>
+  </div>
+
+</main>
+
+<footer>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="init.js"></script>
-<script src="custom"></script>
-  </html>
+<script src="custom.js"></script>
+
+<script>
+  const submitBtn = document.getElementById("submitBtn");
+  const confirmationMessage = document.getElementById("confirmationMessage");
+
+  submitBtn.addEventListener("click", () => {
+      const firstName = document.querySelector('input[aria-label="First name"]').value.trim();
+      const lastName = document.querySelector('input[aria-label="Last name"]').value.trim();
+
+      if (!firstName || !lastName) {
+          confirmationMessage.classList.remove("d-none");
+          confirmationMessage.classList.replace("alert-success", "alert-danger");
+          confirmationMessage.innerHTML = "Vänligen fyll i både för- och efternamn.";
+          return;
+      }
+
+      confirmationMessage.innerHTML = `
+          Hej <strong>${firstName} ${lastName}</strong>!<br>
+          Tack för din bokning. Du kommer snart få en e-mail-bekräftelse.
+      `;
+      confirmationMessage.classList.remove("d-none");
+      confirmationMessage.classList.replace("alert-danger", "alert-success");
+  });
+</script>
+
+</body>
+</html>
