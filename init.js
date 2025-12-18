@@ -39,7 +39,7 @@ let header = document.getElementsByTagName("Header");
           <li><a href="tjänster.html" class="footer-link">Tjänster</a></li>
           <li><a href="vision.html" class="footer-link">Kontakt</a></li>
         </ul>
-         <img src="Skärmbild 2025-12-12 151930 (1).png" alt="Logotyp eller bild" class="footer-img">
+         <img src="Skärmbild 2025-12-12 151930 (1).png" alt="detaljerad logga" class="footer-img">
       </div>
 
     </div>
